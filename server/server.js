@@ -38,6 +38,14 @@ app.use("/api/conversations", conversationRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/gifs", gifRoutes);
 
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Relay Chat API is running 🚀",
+    health: "/api/health"
+  });
+});
+
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
