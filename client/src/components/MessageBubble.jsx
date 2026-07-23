@@ -205,6 +205,11 @@ export default function MessageBubble({
                 src={`${SOCKET_URL}${message.file.url}`}
                 alt={message.file.name}
                 className="attachment-image"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.classList.add("attachment-image-broken");
+                  e.currentTarget.alt = "⚠️ Image failed to load";
+                }}
               />
             ) : (
               <a
